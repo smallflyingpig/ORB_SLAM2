@@ -172,11 +172,15 @@ This will create **libORB_SLAM2.so**  at *lib* folder and the executables **mono
 1. Add the path including *Examples/ROS/ORB_SLAM2* to the ROS_PACKAGE_PATH environment variable. Open .bashrc file and add at the end the following line. Replace PATH by the folder where you cloned ORB_SLAM2:
 
   ```
+  source ~/.bashrc
   export ROS_PACKAGE_PATH=${ROS_PACKAGE_PATH}:PATH/ORB_SLAM2/Examples/ROS
+  echo $ROS_PACKAGE_PATH
   ```
+  Typical the output is '/opt/melodic/share:PATH/ORB_SLAM2/Examples/ROS'.
   
 2. Execute `build_ros.sh` script:
 
+  Before run 'build_ros.sh`, make sure that `-lboost_system` is added in ./Examples/ROS/ORB_SLAM2/CMakeLists.txt.
   ```
   chmod +x build_ros.sh
   ./build_ros.sh
