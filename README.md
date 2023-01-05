@@ -189,9 +189,17 @@ This will create **libORB_SLAM2.so**  at *lib* folder and the executables **mono
 ### Running Monocular Node
 For a monocular input from topic `/camera/image_raw` run node ORB_SLAM2/Mono. You will need to provide the vocabulary file and a settings file. See the monocular examples above.
 
+1. open a terminal, and run the `roscore`.
+2. open the usb camera
+```
+roslaunch usb_cam usb_cam-test.launch
+```
+Note that you should install usb cam with `sudo apt-get install ros-melodic-usb-cam` firstly.
+3. run the ORB_SLAM2 Mono.
   ```
   rosrun ORB_SLAM2 Mono PATH_TO_VOCABULARY PATH_TO_SETTINGS_FILE
   ```
+  Note that if you use usb camera the video topic is /usb_cam/image_raw. So you should modify the subscribed topic in `ros_mono.cc` from `/camera/image_raw` to `/usb_cam/image_raw`.
   
 ### Running Monocular Augmented Reality Demo
 This is a demo of augmented reality where you can use an interface to insert virtual cubes in planar regions of the scene.
